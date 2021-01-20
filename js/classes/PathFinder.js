@@ -1,4 +1,18 @@
-showFileImports ? console.log("PathFinder.js Loaded") : null;
+
+class PathNode {
+    constructor(x, y) {
+        // Properties
+        this.x = x;
+        this.y = y
+        this.id = this.x + "-" + this.y;
+
+        this.visited = false;
+        this.distance = 99999;
+        this.neighbors = [];
+        this.parentNode = null;
+    }
+
+}
 /**
  * Pathfinder using Dijkstra's algorithm
  */
@@ -39,10 +53,12 @@ class PathFinder {
         this.addNeighbors();
         this.calculateDistances();
         this.traceback.reverse();
-        //this.toString();
-       
         
-
+        this.pathFound = false;
+        if (this.traceback.length > 1) {
+            this.pathFound = true;
+        }
+       
     }
 
     createUnvisitedSet() {
@@ -55,15 +71,15 @@ class PathFinder {
                     this.universalSet.push(newNode)
 
                     // Asign node to unvisited set
-                    if (this.array[i][j] == EMPTY) {
+                    if (this.array[i][j] == this.viablePathingNodes[0]) {
                         this.unvisitedSet.push(newNode);
                     }
-                    else if (this.array[i][j] == START) {
+                    else if (this.array[i][j] == this.startValue) {
                         newNode.distance = 0;
                         this.startNode = newNode;
                         this.currentNode = newNode;
                     }
-                    else if (this.array[i][j] == FINISH) {
+                    else if (this.array[i][j] == this.endValue) {
                         this.endNode = newNode;
                         this.unvisitedSet.push(newNode);
                     }
@@ -176,15 +192,12 @@ class PathFinder {
         // Check to see if the finish node has been visited
         if (this.endNode.visited != true) {
             this.path.push(this.currentNode);
-            //console.log(this.path);
 
             //find the lowest distance node in unvisited
             let lowestNode = null
             for (let i = 0; i < this.unvisitedSet.length; i++) {
-                //console.log(this.unvisitedSet[i].visited)
                 if ((lowestNode == null) && (this.unvisitedSet[i].visited == false)) {
                     lowestNode = this.unvisitedSet[i];
-                    //console.log("Setting New Lowest Node")
                 } else if ((lowestNode != null) && (this.unvisitedSet[i].visited == false)){
                     if (lowestNode.distance > this.unvisitedSet[i].distance) {
                         lowestNode = this.unvisitedSet[i];
@@ -192,17 +205,15 @@ class PathFinder {
                 }
             }
             this.currentNode = lowestNode;
-            //console.log("Recalculating Distance")
             this.maxStepCounter += 1;
             if (this.maxStepCounter < 200) {
                 this.calculateDistances();
             }
             
-        }  else if (this.endNode.visited == true) {
-            console.log("Completed");
-            console.log(this.endNode)
+            
+        }  
+        else if (this.endNode.visited == true) {
             this.pathTraceback(this.endNode);
-            //console.log(this.path);
         }
     }
 
@@ -211,8 +222,7 @@ class PathFinder {
         if (node.parentNode != null) {
             this.pathTraceback(node.parentNode);
         } else if (node.parentNode == null) {
-            console.log("Completed Traceback");
-            console.log(this.traceback);
+
         }
     }
 

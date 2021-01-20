@@ -1,0 +1,131 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color:black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#text-content {
+    float: left;
+    background-color: none;
+    color: black;
+    background-color: pink;
+}
+
+/* Classes */
+.info-box {  
+    border-bottom-width: 2px;
+    border-bottom-color: black;
+    border-bottom-style: solid;
+    padding: 0px;
+    background-color: white;
+}
+
+#selected-tile {
+    background-color: #585858;
+    color: white;
+}
+
+#map-info {
+    background-color: #8DCEDB;
+}
+
+#upgrades {
+    background-color: #6CD48A;
+}
+
+#helper-functions {
+    background-color: pink;
+}
+
+button {
+    background-color: #C3C3C3;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 7px;
+}
+
+
+
+/* canvas */
+
+#game-canvas {
+    background-color: pink;
+    float: left;
+    cursor: cell;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#animation-canvas {
+    position: fixed;
+    left: 0px;
+    cursor: cell;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* Button Options */
+.option {
+    background-color: orange;
+    margin: 0px;
+    padding: 10px;
+    cursor: pointer;
+}
+.option-title {
+    background-color: pink;
+}
+.option-details {
+    background-color: purple;
+}
+
+
+.sel-name {
+    background-color: black;
+    margin: 0px;
+    padding: 5px;
+    font-weight: bold;
+    cursor: default;
+}
+
+.option:hover {
+    background-color: darkorange;
+}
+
+.info-container {
+    background-color: black;
+    color: white;
+    width: 180px;
+}
+
+
+.info-container-title {
+    background-color: black;
+    padding: 5px;
+}
+
+
+
+.info-container-description {
+    background-color: black;
+    padding: 5px;
+    min-height: 100px;
+}
+
+.small-image{
+    width: 60px;
+    height: 60px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
