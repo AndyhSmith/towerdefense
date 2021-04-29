@@ -140,9 +140,9 @@ T_TOWER_BLACK_SNIPER.setName("Black Sniper Tower")
 const MAP_X_OFFSET = 0
 const MAP_Y_OFFSET = 0
 
-const MAP_X_TILES = 7
-const MAP_Y_TILES = 14
-const TILE_SIZE = 60
+const MAP_X_TILES = getRandomInt(30) + 10
+const MAP_Y_TILES = getRandomInt(30) + 10
+const TILE_SIZE = 60 / 2
 
 // COMPUTED 
 const MAP_WIDTH = MAP_X_TILES * TILE_SIZE;
@@ -310,7 +310,7 @@ class Canvas {
     showCheckedNodes(gameMap) {
         if (gameMap.showCheckedNodes) {
             for (let i = 1; i < gameMap.pathFinder.checkedNodes.length - 1; i++) {
-                this.drawImage(gameMap.pathFinder.checkedNodes[i].x * gameMap.tileSize, gameMap.pathFinder.checkedNodes[i].y * gameMap.tileSize, gameMap.tileSize, RED_DOT);
+                this.drawImage(gameMap.pathFinder.checkedNodes[i].x * gameMap.tileSize, gameMap.pathFinder.checkedNodes[i].y * gameMap.tileSize, gameMap.tileSize, T_TOWER.img);
             }
         }
     }
@@ -412,7 +412,7 @@ class Enemy1 {
         this.y = (this.path[0].y * tileSize);
         this.r = 255;
         this.g = 255;
-        this.b = 0;
+        this.b = getRandomInt(255);
 
         this.maxStepsOnPath = 20;
         this.pathPosition = 0;
@@ -514,14 +514,14 @@ class GameInfo {
         return builtShowInfoText;
     }
 
-    buildButton() {
+    buildButton(activationFunction, title, description) {
         let builtButton = "" + 
-        "<div class='option' onclick='buildWall()'>" +
+        "<div class='option' onclick='" + activationFunction + "'>" +
             "<div class='option-title'>" +
-                "Build Wall" +
+                title +
             "</div>" +
             "<div class='option-details'>" +
-                "Details" +
+                description +
             "</div>" +
         "</div>";
 
@@ -540,7 +540,7 @@ class GameInfo {
             case T_EMPTY.num:
                 selectedType = "<div class='sel-name'>Empty Space</div>" +
                 "<div class='option' onclick='buildTower(0)'>Build Tower</div>" +
-                this.buildButton();
+                this.buildButton("buildWall()", "Build Wall", "Cost: 9839");
                 showInfo = this.infoGen(T_EMPTY)
                 break;
             case T_ROCK.num:
@@ -977,6 +977,10 @@ function startWave() {
 //--------------------------------------------------
 
 function eIncome() {
+    return 1;
+}
+
+function costWall() {
     return 1;
 }
 

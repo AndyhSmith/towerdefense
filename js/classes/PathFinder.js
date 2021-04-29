@@ -206,7 +206,7 @@ class PathFinder {
             }
             this.currentNode = lowestNode;
             this.maxStepCounter += 1;
-            if (this.maxStepCounter < 200) {
+            if (this.maxStepCounter < 1000) {
                 this.calculateDistances();
             }
             

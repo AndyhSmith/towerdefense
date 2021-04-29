@@ -1,0 +1,73 @@
+body {
+    margin: 0px;
+    
+}
+
+#loading{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+/* CONTAINERS */
+#game {
+    background-color: black;
+    background-image: url("images/stars3.png");
+}
+
+
+#controls {
+    position: relative;
+    background-color: black;
+}
+
+#controls1 {
+    background-color: darkgrey;
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
+#controls2 {
+    background-color: grey;
+    width: 30%;
+    height: 100%;
+    float: left;
+}
+
+#controls3 {
+    background-color: lightseagreen;
+    width: 30%;
+    height: 100%;
+    float: left;
+}
+
+#controls4 {
+    background-color: darkgrey;
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+
+
+/* CANVAS */
+
+
+#animation-canvas {
+    position: fixed;
+    cursor: cell;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+#game-canvas {
+    position: fixed;
+    background-color: grey;
+    cursor: cell;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}

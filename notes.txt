@@ -4,3 +4,6 @@ monsters that find the shortest path.
 Monsters that dont find the shortest path and add unpredictablly random paths.
 ^Dad
 Monsters could evolve. / Get smarter with time. Start with not shortest path. 
+
+
+selecting a wall perminantly selects it. 
